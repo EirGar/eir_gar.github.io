@@ -1,1 +1,1 @@
-# eirinaios_gardelakos.github.io
+# eir_gar.github.io
