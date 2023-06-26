@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Browser</title>
+</head>
+
+<body>
+<div class="testimonial">
+
+  <h1>
+    Group project of Course, named 'Data Visualization' 2022-23
+  </h1>
+    <div class="line"></div>
+    <h1>
+        Global Happiness Atlas:
+        Exploring the Nexus of Peace, Education, and Wealth
+    </h1>
+    <div class="line"></div>
+  <script src="script.js"></script>
+
+
+      <h1>Team 2 members</h1>
+      <div class="line"></div>
+      <!-- arrow wrapper contains the review and the arrows -->
+      <div class="arrow-wrapper">
+          <!-- review section -->
+          <div id="reviewWrap" class="review-wrap">
+              <div id="imgBox"></div>
+              <div id="name"></div>
+              <div id="profession"></div>
+              <div id="description"></div>
+          </div>
+          <!-- left arrow -->
+          <div class="left-arrow-wrap">
+              <div class="arrow"></div>
+          </div>
+          <!-- right arrow -->
+          <div class="right-arrow-wrap">
+              <div class="arrow"></div>
+          </div>
+      </div>
+  </div>
+
+  <script>
+    const reviewWrap = document.getElementById("reviewWrap");
+    const leftArrow = document.querySelector(".left-arrow-wrap .arrow");
+    const rightArrow = document.querySelector(".right-arrow-wrap .arrow");
+    const imgBox = document.getElementById("imgBox");
+    const name = document.getElementById("name");
+    const profession = document.getElementById("profession");
+    const description = document.getElementById("description");
+
+    let people = [{
+        photo: 'url("https://media.licdn.com/dms/image/D4D03AQF8-5pPMudwlg/profile-displayphoto-shrink_800_800/0/1666279212513?e=2147483647&v=beta&t=wTgNyQKF3nP99x1qV_CwLlOG7Rmk4CbFCm_YmcOGuow")',
+        name: "Gardelakos Eirinaios Odysseas",
+        profession: "Student of Msc in Computer Science, NKUA",
+        description: "Currently working as a Software Developer and partially doing his Master's studies."
+      },
+      {
+        photo: "url('')",
+        name: "Borbantonaki Despoina",
+        profession: "Student",
+        description: "test"
+      },
+      {
+        photo: "url('')",
+        name: "Kordonis Georgios",
+        profession: "Student",
+        description: "test"
+      },
+    ];
+
+    // set the first person
+    imgBox.style.backgroundImage = people[0].photo;
+    name.innerText = people[0].name;
+    profession.innerText = people[0].profession;
+    description.innerText = people[0].description;
+    let currentPerson = 0;
+
+    //Select the side where you want to slide
+    function slide(side, personNumber) {
+      let reviewWrapWidth = reviewWrap.offsetWidth + "px";
+      let descriptionHeight = description.offsetHeight + "px";
+      //(+ or -)
+      let side1symbol = side === "left" ? "" : "-";
+      let side2symbol = side === "left" ? "-" : "";
+
+      setTimeout(() => {
+        imgBox.style.backgroundImage = people[personNumber].photo;
+      }, 0);
+      setTimeout(() => {
+        description.style.height = descriptionHeight;
+      }, 100);
+      setTimeout(() => {
+        name.innerText = people[personNumber].name;
+      }, 200);
+      setTimeout(() => {
+        profession.innerText = people[personNumber].profession;
+      }, 300);
+      setTimeout(() => {
+        description.innerText = people[personNumber].description;
+      }, 400);
+    }
+
+    function setNextCardLeft() {
+      if (currentPerson === 3) {
+        currentPerson = 0;
+        slide("left", currentPerson);
+      } else {
+        currentPerson++;
+      }
+
+      slide("left", currentPerson);
+    }
+
+    function setNextCardRight() {
+      if (currentPerson === 0) {
+        currentPerson = 3;
+        slide("right", currentPerson);
+      } else {
+        currentPerson--;
+      }
+
+      slide("right", currentPerson);
+    }
+
+    leftArrow.addEventListener("click", setNextCardLeft);
+    rightArrow.addEventListener("click", setNextCardRight);
+  </script>
+
+  <h5>Click the link below to navigate to the second page of my project and check out a data-driven visualization image</h5>
+  <a href="second.html">2nd page</a>
+</body>
+
+</html>
